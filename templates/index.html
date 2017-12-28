@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Film</h1>
+    {% for film in films %}
+        <h2>Titel: {{ film.title }}</h2>
+        <p>Genre: {{ film.genre }}</p>
+        <p>Qualitaet: {{ film.qual }}</p>
+    {% endfor %}
+    <!-- {% include "pagination.html" with page=posts %} -->
+{% endblock %}

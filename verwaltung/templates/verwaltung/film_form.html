@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block body %}
+<div class="container">
+  <form method="POST" action="{% url 'verwaltung:newfilm' %}" id="filmForm">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit">Speichern</button>
+  </form>
+</div>
+{% endblock %}
