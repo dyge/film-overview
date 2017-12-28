@@ -20,6 +20,7 @@ class Film(models.Model):
         ('Crime','Crime'),
         ('Mystery','Mystery'),
         ('Romance','Romance'),
+        ('Romance','Romance'),
     )
     title = models.CharField(max_length=150, unique=True)
     genre = models.CharField(max_length=100,choices=GENRES)
