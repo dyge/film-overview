@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+  {% if user.is_authenticated %}
     <h1>Filme</h1>
     {% for film in films %}
-        <h2>Titel: <a href="{% url 'verwaltung:film_detail' pk=film.pk %}">{{ film.title }}</a></h2>
+        <h2>Titel: <a href="{% url 'verwaltung:film_detail' pk=film.pk %}">{{ film.titel }}</a></h2>
         <p>Genre: {{ film.genre }}</p>
         <p>Qualitaet: {{ film.qual }}</p>
     {% endfor %}
-    <!-- {% include "pagination.html" with page=posts %} -->
+    {% include "pagination.html" with page=page_obj %}
+  {% else %}
+    <h1>Filmdatenbank</h1>
+  {% endif %}
 {% endblock %}

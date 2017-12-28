@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{ film.title }}</h1>
+<h1>{{ film.titel }}</h1>
 <p>Genre: {{ film.genre }}</p>
 <p>Qualitaet: {{ film.qual }}</p>
 {% if user.is_authenticated %}
-  <a class="btn btn-primary" href="#">Bearbeiten</a>
-  <a class="btn btn-primary" href="#">Löschen</a>
+  <a class="btn btn-primary" href="{% url 'verwaltung:film_edit' pk=film.pk %}">Bearbeiten</a>
+  <a class="btn btn-primary" href="{% url 'verwaltung:film_remove' pk=film.pk %}">Löschen</a>
 {% endif %}
 {% endblock %}

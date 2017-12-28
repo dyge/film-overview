@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 {% block content %}
 <div class="container">
-  <form method="POST" action="{% url 'verwaltung:newfilm' %}" id="filmForm">
+  <form method="POST" id="filmForm">
     {% csrf_token %}
     {% bootstrap_form form %}
     <button type="submit">Speichern</button>
