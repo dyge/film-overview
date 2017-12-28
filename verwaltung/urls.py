@@ -7,4 +7,5 @@ app_name = 'verwaltung'
 urlpatterns = [
     url(r"uebersicht/$", views.Uebersicht.as_view(),name='uebersicht'),
     url(r"add_film/$", views.CreateFilm.as_view(), name="newfilm"),
+    url(r'^film/(?P<pk>\d+)$', views.FilmDetailView.as_view(), name='film_detail'),
 ]
