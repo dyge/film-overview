@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
-{% block body %}
+{% block content %}
 <div class="container">
   <form method="POST" action="{% url 'verwaltung:newfilm' %}" id="filmForm">
     {% csrf_token %}

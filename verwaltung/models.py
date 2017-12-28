@@ -1,15 +1,16 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 class Film(models.Model):
     QUALS = (
-        ('sehr gut','Sehr gut'),
-        ('gut','Gut'),
-        ('mittel','Mittel'),
-        ('schlecht','Schlecht'),
+        ('sehr gut','sehr gut'),
+        ('gut','gut'),
+        ('mittel','mittel'),
+        ('schlecht','schlecht'),
     )
     GENRES = (
-        ('comedy','Komoedie'),
-        ('horror','Horror'),
+        ('Komoedie','Komoedie'),
+        ('Horror','Horror'),
     )
     title = models.CharField(max_length=150)
     genre = models.CharField(max_length=100,choices=GENRES)
