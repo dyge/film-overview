@@ -1,8 +1,20 @@
 {% extends "base.html" %}
+{% block oben %}
+<style>
+  .mydel{
+    margin-top: 30px;
+  }
+  .myp{
+    font-size: 1.3em;
+  }
+</style>
+{% endblock %}
 {% block content %}
+<div class="container mydel">
   <form action="" method="post">
 		{% csrf_token %}
-    <p>Möchten Sie den Film "{{ film.titel }}" aus der Kategorie "{{ film.genre }}" wirklich löschen?</p>
+    <p class="myp">Möchten Sie den Film "{{ film.titel }}" aus der Kategorie "{{ film.genre }}" wirklich löschen?</p>
     <input class='btn btn-danger' type="submit" value="Löschen">
   </form>
+</div>
 {% endblock %}

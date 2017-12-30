@@ -1,14 +1,58 @@
 {% extends "base.html" %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+{% block head %}
+<style>
+  .pagination{
+    margin-left: 7px;
+  }
+  .afilm{
+    border: solid 1px black;
+    width: 70%;
+  }
+  h3{
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  .pag{
+    margin-top: 40px;
+    margin-left: auto;
+    float: right;
+  }
+</style>
+{% endblock %}
+{% block oben %}
+<form class="form-inline my-2 my-lg-0" method="get" action="">
+  <input name="q" type="text" placeholder="Search..." value="{{ request.GET.q }}">
+  <input type="submit" name="" value="Search">
+</form>
+{% endblock %}
 {% block content %}
   {% if user.is_authenticated %}
-    <h1>Filme</h1>
-    {% for film in films %}
-        <h2>Titel: <a href="{% url 'verwaltung:film_detail' pk=film.pk %}">{{ film.titel }}</a></h2>
-        <p>Genre: {{ film.genre }}</p>
-        <p>Qualitaet: {{ film.qual }}</p>
-    {% endfor %}
-    {% include "pagination.html" with page=page_obj %}
+    <div class="container-fluid">
+      <h1>Filme</h1>
+      {% for film in object_list %}
+        <div class="afilm">
+          <h3>Titel: <a href="{% url 'verwaltung:film_detail' pk=film.pk %}">{{ film.titel }}</a></h3>
+          <div class="row">
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+              <p>Bewertung: {{ film.bew }}</p>
+              <p>Genre: {{ film.genre }}</p>
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+              <p>Qualitaet: {{ film.qual }}</p>
+              <p>Ort: {{ film.ort }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      <div class="pag">
+        {% include "pagination.html" with page=page %}
+      </div>
+    </div>
   {% else %}
-    <h1>Filmdatenbank</h1>
+    <div class="container">
+      <h1>Filmdatenbank</h1>
+    </div>
   {% endif %}
 {% endblock %}
